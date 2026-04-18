@@ -7,11 +7,7 @@ Created on Tue Apr 14 23:44:14 2026
 
 import math
 
-# Data: (Hours Studied, Passed?)
-# 1hr -> Fail, 2hr -> Fail, 4hr -> Pass, 5hr -> Pass
 data = [(1, 0), (2, 0), (4, 1), (5, 1)]
-
-# 1. Initialize
 w = 0.0
 b = 0.0
 lr = 0.1
@@ -19,20 +15,36 @@ lr = 0.1
 def sigmoid(z):
     return 1 / (1 + math.exp(-z))
 
-# 2. The Learning Loop
+# New function just to CALCULATE the Log Loss score
+def calculate_log_loss(y_actual, y_pred):
+    # Adding a tiny number (1e-15) so we never calculate math.log(0), which crashes Python
+    y_pred = max(min(y_pred, 1 - 1e-15), 1e-15) 
+    if y_actual == 1:
+        return -math.log(y_pred)
+    else:
+        return -math.log(1 - y_pred)
+
 for epoch in range(1000):
+    total_loss = 0 # Let's keep track of our total error
+    
     for x, y_actual in data:
-        # Step A: Predict (Linear + Sigmoid)
+        # Step A: Predict
         z = w * x + b
-        y_pred = sigmoid(z) #why is the z value going through the sigmoid function and how does that help with classification
+        y_pred = sigmoid(z)
         
-        # Step B: Calculate Error 
-        # (The math simplifies beautifully here!)
+        # Monitor: Let's actually calculate the Log Loss to see it!
+        total_loss += calculate_log_loss(y_actual, y_pred)
+        
+        # Step B & C: Update (Using the beautifully simplified derivative)
         error = y_pred - y_actual
-        
-        # Step C: Update (Same "Nudge" logic as before)
         w = w - (lr * error * x)
         b = b - (lr * error)
+        
+    # Print the loss every 200 epochs to watch it drop!
+    if epoch % 200 == 0:
+        print(f"Epoch {epoch} | Total Log Loss: {total_loss:.4f}")
+
+# (The rest of the testing code is exactly the same...)
 
 # 3. Test the Bouncer
 test_hours = 2
