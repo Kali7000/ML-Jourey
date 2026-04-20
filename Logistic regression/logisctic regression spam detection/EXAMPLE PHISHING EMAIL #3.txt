@@ -1,0 +1,13 @@
+EXAMPLE PHISHING EMAIL #3
+From:”People’s Bank”
+Subject: Offi cial information for all People’s Bank clients.
+Dear People’s Bank Client,
+To provide our customers the most effective and secure online access to their accounts, we are continually upgrading our online services. As we add new features and enhancements to our service, there are certain browser
+versions which will not support these system upgrades. As many customers already know, Microsoft Internet
+Explorer has signifi cant ‘holes’ or vulnerabilities that virus creators can easily take advantage of.
+In order to further protect your account, we have introduced some new important security standards and browser
+requirements. People’s Bank security systems require that you test your browser now to see if meets the requirements to People’s Bank Online Banking.
+Please -LINK REMOVED FROM THIS EXAMPLE- Sign on to Internet Banking in order to verify security update
+installation. This security update will be effective immediately. In the meantime, some of the Internet Banking
+services may not be available.
+Sincerly yours, People’s Bank Team!

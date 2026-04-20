@@ -1,0 +1,16 @@
+EXAMPLE PHISHING EMAIL #1
+Dear People’s Bank Client,
+For your security, the profi le that you are using to access People’s Bank Online Banking has been locked because
+of too many failed login attempts. You can unlock this profi le online by selecting an option below:
+Unlock your profi le with:
+My ATM/Visa Check Card number and PIN.
+Other personal information (Social Security Number, Account #, etc)
+E-mail address.
+We regret any inconvenience this may cause you.
+Sincerely,
+People’s Bank Account Review Department.
+We are requesting this information to verify and protect your identity. This is in order to prevent the use of the U.S.
+banking system in terrorist and other illegal activity.
+Need help? Use “Site Helper” or call customer service at 1.800.788.7000.
+Please do not “Reply” to this Alert.
+©2005 People’s Bank Financial Group. All rights reserved
