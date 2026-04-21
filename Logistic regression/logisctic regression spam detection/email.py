@@ -101,7 +101,8 @@ for varaibels, actual in zip (test_data[:,:-1], test_data[:,-1]):
     total_loss += calculate_log_loss(actual, prediction)
     #print(f"Predicted: {result}, actual = {actual}")
 print(f"{wrong} got wrong, out of {len(test_data)}")
-print(f"Accurecy: {(wrong/len(test_data))*100}%, with Log Loss = {total_loss:.4f}")
+Accurecy= (wrong/len(test_data))*100
+print(f"Accurecy: {Accurecy}%, with Log Loss = {total_loss:.4f} on test data")
 
 
 
@@ -115,7 +116,8 @@ def predict_email(text):
     
     with open(text, 'r') as f:
         my_list = f.read().split()
-        print(my_list)
+        content = f.read()
+        print(content)
     
 
 

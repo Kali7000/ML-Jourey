@@ -61,7 +61,7 @@ w26 = w27 = w28 = w29 = 0.0
 w30 = w31 = w32 = 0.0
 w33 = w34 = 0.0
 w35 = 0.0
-learning_rate = 0.005
+learning_rate = 0.02
 epochs = 2000
 
 def predict(x1, x2, x3, x4, x5, x6, x7):
