@@ -1,2 +1,2 @@
-# ML Jourey
+# My ML projects
 
