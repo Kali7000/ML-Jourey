@@ -1,7 +1,6 @@
 **About this Model**
 
-I build a 2nd degree Polynomial Regression on Predicting Housing Prices Using L1 penelty. 
-With Housing Data from https://www.kaggle.com/code/dglindner2/lasso-regression-on-housing-data/notebook
+I build a 2nd degree Polynomial Regression on Predicting Housing Prices Using L1 penelty with Housing Data from https://www.kaggle.com/code/dglindner2/lasso-regression-on-housing-data/notebook
 
 _Lasso regression.py_ is my original version with minimal use of the libreries. - It's slow and a bit inaccurate.
 
