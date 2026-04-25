@@ -26,7 +26,7 @@ def normalize_with_stat(df, stat):
     # Uses the stats from training data — never refit on test
     df_z = (df - stat['mean']) / stat['std']
     return df_z
-
+   
 
 # ---------------------------------------------------------------------------
 # Preprocessing
