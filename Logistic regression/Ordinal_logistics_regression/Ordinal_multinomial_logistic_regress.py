@@ -40,7 +40,7 @@ def calculate_cross_entropy(predicted_probablity_of_target_class):
     return -math.log(p)
 
 
-def build_confusion_matrix(actual_quality, predicted_quality):
+def build_confusion_matrix(actual_labels, predicted_labels):
     print("\n--- Confusion Matrix ---")
     print("Rows: Actual Quality | Columns: Predicted Quality")
     print("      3   4   5   6   7   8")
@@ -64,10 +64,15 @@ def build_confusion_matrix(actual_quality, predicted_quality):
 
 
 
-def train_model(train_wine_df, weights, thresholds, lr, epochs):  
+def train_model(train_wine_df, weights, thresholds, lr, epochs, l2_penalty = 0.01):  
     train_set_wine_matrix = train_wine_df.to_numpy() 
     for epoch in range(epochs):
         total_loss = 0
+        
+        if epoch == 1000:
+            lr = 0.01
+        elif epoch == 2500:
+            lr = 0.004
         
         for row in train_set_wine_matrix:
             features = row[:-1]
@@ -97,7 +102,7 @@ def train_model(train_wine_df, weights, thresholds, lr, epochs):
             
     
             error_w = (indicator_above - prob_above) + (indicator_below - prob_below)
-    
+            # ... [your threshold updates] ...
             if lable_index < 5:
                     error_t_above = 1 - prob_above
                     thresholds[lable_index] += lr * error_t_above
@@ -105,13 +110,17 @@ def train_model(train_wine_df, weights, thresholds, lr, epochs):
             if lable_index > 0:
                 error_t_below = 0 - prob_below
                 thresholds[lable_index - 1] += lr * error_t_below
+                
+            # NEW: Force the thresholds to stay strictly ordered
+            thresholds = sorted(thresholds)
     
     
             #update weights
-            weights -= features*lr*error_w
+            weights -= (features*lr*error_w)
             
             total_loss += calculate_cross_entropy(prob_of_correct_ans)
-        
+        #Apply the L2 penalty once at the end of the epoch
+        weights -= (lr * l2_penalty * weights)
         if epoch%100 == 0:
             print(f"For Epoch: {epoch}|| Total log loss:{total_loss:.4f}")
     
@@ -204,14 +213,13 @@ test_wine_df, stats = standardize(test_set, stats)
 
 
 weights = np.zeros(11)
-thresholds = [-2.0, -1.0, 0.0, 1.0, 2.0]
-lr = 0.02
-epochs = 10000
-
+thresholds = [-4.0, -2.0, 0.0, 2.0, 4.0]
+lr = 0.05
+epochs = 2000
+lambda_val = 0.01
    
-weights, thresholds = train_model(train_wine_df, weights, thresholds, lr, epochs)
-
+weights, thresholds = train_model(train_wine_df, weights, thresholds, lr, epochs,lambda_val)
 
 actual_labels, predicted_labels, correct_guesses = test_model(test_wine_df, weights, thresholds)
-    
-    
+
+build_confusion_matrix(actual_labels, predicted_labels)
